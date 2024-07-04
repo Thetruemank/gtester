@@ -14,10 +14,19 @@ class ProjectManager:
         self.ask_clarifying_questions()
 
     def ask_clarifying_questions(self):
-        # Placeholder for asking clarifying questions
-        self.clarifying_questions = ["What is the main goal of the project?", "What are the key features?"]
-        for question in self.clarifying_questions:
+        while True:
+            question = self.interact_with_gpt4("Ask a clarifying question about the project.")
             print(question)
+            self.clarifying_questions.append(question)
+            more_questions = self.interact_with_gpt4("Do we need to ask more questions?")
+            if more_questions.lower() in ["no", "n"]:
+                break
+
+    def interact_with_gpt4(self, prompt):
+        # Placeholder for interacting with GPT-4 for asking clarifying questions
+        print(f"Interacting with GPT-4: {prompt}")
+        response = input("GPT-4 response: ")
+        return response
 
     def delegate_tasks(self):
         # Placeholder for delegating tasks to the appropriate agents
